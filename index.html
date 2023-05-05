@@ -1,0 +1,261 @@
+<html>
+<head>
+<style>
+	.button a { display: inline; float: left; margin-right: 20px; width: 255px; height: 180px; background-image: url(button.jpg);}
+	.button a:hover { background-image: url(button-off.jpg);}
+	.content { font-family: times new roman, san sarif, helvetica; font-size: 12pt;}
+   .top { font-family: times new roman, san sarif, helvetica; font-size: 12pt; height: 190px; }
+	#s { margin-left: 30px; }
+</style>
+<script>
+
+/* Articles/Possessives */
+
+var words1 = new Array (
+"Bob's", "the", "a", "each", "every", "my", "his", "your", "its", "Gumby's", "Hidalgo's", "Adolf's", "Hilda's", "Otis's", "Papa Smurf's", "yo' Mama's", "Spino's", "I wonder whose", "Mr. Marroquin's", "Mrs. Schweikert's", "Mr. Crane's", "Coach Edge's", "Mrs. Drigger's",
+"Bill Clinton's", "Mr. Burton's", "Roland's", "Pepe's", "Pedro's", "Guadalupe's", "Ralph's", "Linda's", "Gomez's", "Raul's", "Mr. Sloop's", "Dr. Spanky's", "Fred's", "Larry's", "Nabisco's", "Rudolph's", "Farley's", "Hitler's", "Benito's", "Caesar's", "the czar's",
+"Dr. Jackson's", "Mother's", "Father's", "Douglas Byrd's", "Woody's", "Sam's", "Norm's", "Napoleon's", "Santa's", "Sally's", "Fatso's", "Gorbachev's", "Rasputtin's", "Wolfgang's", "Cuthbert's", "Wilberforce's", "Ernest's", "Bryce's", "Sinead's",
+"the Salvation Army's", "George Bush's", "the Archduke's", "der Fuhrer's", "the Pope's", "Peter, Paul, and Mary's", "Frank's", "Cisco's", "Colin Powell's", "the bishop's", "Bill Cosby's", "David Letterman's", "Phil Donahue's", "Martin Scorcese's",
+"Balbir's", "Bobcat's", "the Doctor's", "Icabod's", "Isaac's", "Claybourne's", "Ross Perot's", "Dukakis's", "Sir Gawaine's", "Bouregard's", "Oprah's", "Leroy's", "Jerome's", "Augustus's", "Lumpy's", "Skippy's", "the Emperor's", "the Jedi's", "the Magi's", "Bilbo's",
+"il Duce's", "Barnaby's", "Elfie's", "Godzilla's", "Pokey's", "Goo's", "Prickle's", "Octavian's", "Julius's", "Reginald's", "Archibald's", "King Tut's", "Orko's"
+);
+
+/* Adjectives */
+
+var words2 = new Array ("random", "rather small", "rather large", "smelly", "humongous", "illegitimate", "green", "nasal", "slick", "greasy", "brown", "Austrian", "befuddled", "exploding", "furry", "sticky", "pus-filled", "fiery", "scaly", "fleshlike", "tattered", "lustful", "adulterous", "cleanly",
+"technological", "crunchy", "sour", "imprisoned", "puffy", "grainlike", "peaceful", "elongated", "funguslike", "somewhat erotic", "flaky", "leathery", "moistened", "crusted", "distended", "engorged", "pressurized", "mellifluous", "livid", "mischievous", "vicious",
+"malignant", "benign", "surgical", "dancing", "mountain climbing", "lost", "prickly", "gangliated", "castrated", "bulging", "exuding", "calm", "bouncing", "gleeful", "caustic", "discorporeal", "hard", "filmy", "dispassionate", "red", "spacious", "Jewish", "three-dimensional",
+"touching", "borderline", "youthful", "wet", "sedimentary", "volcanic", "surprised", "phallic", "icy", "shaky", "trembling", "heroic", "suicidal", "maniacal", "emaciated", "obese", "real", "beautiful", "ugly", "numerous", "ferocious", "preserved", "rotted", "mutinous", "mutated",
+"blasphemous", "sacrilegious", "ceremonial", "pubic", "putrid", "fetid", "urban", "gargantuan", "creamy", "opaque", "transparent", "unctuous", "crimson", "gory", "tepid", "stupid", "redundant", "musical", "resonant", "rotund", "roundabout", "laughable", "amusing", "carnivorous",
+"confused", "retarded", "moronic", "stupefied", "woody", "stiff", "exorbitant", "squeaky", "rancorous", "coffered", "gastrointestinal", "giant", "static", "gravitational", "massive", "stringy", "rampant", "irrevocable", "bombastic", "stoic", "impermeable", "linguistic", "curly",
+"pewter", "encrusted", "dusty", "dank", "foggy", "infantile", "bubonic", "boyish", "girlish", "pursed", "singular", "puzzling", "very irregular", "incontinent", "senile", "screaming", "sexy", "garish", "gaudy", "homophobic", "dashing", "dazzling", "spiritual", "ropy", "thread-like",
+"soft", "mushy", "juicy", "wacky", "loony", "stooge-like", "mankey", "waggish", "jocular", "sharp", "adhesive", "educational", "parenthetic", "pathetic", "ravishing", "whimpering", "squalid", "rampant", "gleaming", "wanton", "distinguished", "enthralled", "faltering", "implacable",
+"nictitating", "fruity", "ravenous", "impertinent", "intrepid", "diligent", "fastidious", "ebullient", "bilingual", "clotted", "calculated", "pure", "pristine", "philistine", "best-selling", "popular", "well-liked", "mangy", "holy", "baby-faced", "Scottish", "farty", "hairless",
+"pseudo-Utopian", "that", "this", "many a", "Danish", "French", "murky", "simian", "rubbery", "strong", "weak", "Soviet", "unified", "dissected", "separated", "striped", "soulful", "bubbly", "liquid crystal", "orotund", "soporific", "sleepy", "similar", "powdery", "powerful", "first",
+"second", "third", "fourth", "thousandth", "omniscient", "hollow", "junior varsity", "daytime", "nocturnal", "flirtatious", "honorable", "rare", "glowing", "screeching", "whining", "exaggerated", "hopelessly lonely", "bionic", "legendary", "inhospitable", "indigenous",
+"influential", "intuitive", "substitute", "hilarious", "glorious", "sophisticated", "bubonic", "pulpy", "foggy", "shrouded", "ignorant", "sagittal", "smooth", "rough", "lacerated", "protected", "odoriferous",
+"artsy-fartsy", "bloody", "soapy", "grungy", "fashionable"
+);
+
+/* Subjects/Objects/Nouns */
+
+var words3 = new Array ("ape", "sponge", "smegma", "collection of smegma", "penis", "spam", "can of spam", "plate of spam", "gangrene infection", "topsoil", "walrus", "igloo", "vaseline", "yak", "porpoise", "mucous membrane", "goose", "scrotum", "spleen", "liver", "lung", "kidney", "spine", "pancreas",
+"lesion", "boil", "papercut", "locust", "hangnail", "foot", "Kraut", "wog", "git", "crump", "motherboy", "bowl of porridge", "clam", "pail", "cervix", "oyster", "marmoset", "hobbit", "follicle", "domain", "battle", "Simon or Garfunkel", "king", "leper", "pus flareup", "pus", "lemming",
+"cerebrum", "crotch", "excretion", "fluid", "groin", "ostrich", "psoriasis infection", "hostile eruption", "dandruff attack", "father", "empire", "economy", "retina", "sphincter", "pixie", "pirate", "taco", "fairy", "leprechaun", "badger", "lump", "banjo", "parrot", "amoeba",
+"vacuole", "mitochondria", "eunuch", "rooster", "water buffalo", "panda", "corpse", "bosom", "uterus", "placenta", "cavern of fun", "spider monkey", "carton of eggs", "spelunker", "Jew", "saliva", "alveoli", "colon", "marble", "Pepe", "polyp", "cyst", "baseball", "sword",
+"lippage", "horn", "pot of gruel", "home run", "youth", "sediment", "lava stream", "phallus", "foreskin", "nostril", "passageway", "wildebeest", "bag of candy", "silverware", "pool of vomit", "bag of vomit", "eyebrow", "sibling", "leaflet", "Bible", "outcry of blasphemy",
+"fit of megalomania", "suburb", "metropolis", "mandible", "tooth", "coating of enamel", "wax", "planet", "meteor", "orifice", "aperture", "flamingo", "gorilla", "crevice", "fissure", "axis", "musician", "toenail", "cheese", "oxymoron", "paradox", "vibration", "mixture", "gynecologist",
+"gala", "algae", "hyena", "telescope", "jello", "gelatin", "tendon", "connective tissue", "digestive juice", "bastard", "matter", "weight", "density", "audacity", "Smurf", "tallywhacker", "lard", "cellulose", "granule", "wrinkle", "time", "slave", "breath", "odor", "emanation", "corn",
+"armpit", "stub of delight", "voltage", "spark", "utensil", "spatula", "drug", "clitoris", "bag of marijuana", "injection of heroin", "vile of crack", "vile of cocaine", "palmful of angel dust", "tab of orange sunshine", "tab of acid", "tab of LSD", "sperm cell",
+"rose", "hashish cake", "quaaludes flashback", "rock", "blunt", "hit of reefer", "roach", "spliff", "Rastafarian daisy", "alcoholic substance", "laxative", "siamang", "stranger", "duelist", "gall stone", "gibbon", "sow", "piglet", "spirit", "challenge", "rash", "tongue", "hive",
+"minister of faith", "sex therapist", "impotence", "eyebrow", "lawsuit", "necktie", "germ", "jewel", "protrusion", "egg salad", "koala",
+"spam", "highlander", "sheep", "haggis", "cod", "garland", "barrel of chum", "buccaneer", "warthog", "boar", "pork rind", "banana peel",
+"telephone pole", "insulation", "sprocket", "bullfighter", "incision", "glacier", "double chin", "polyglot", "emperor of the Holy Roman Empire", "Spanish air-traffic controller", "will-o-wisp", "bellhop", "busboy", "chauffeur", "situation comedy", "psychodrama",
+"best-seller", "bagpipe", "buffalo", "water buffalo", "musk ox", "chowder", "water baby", "jester", "genus", "rhododendron", "subspecies", "perineum", "terrarium", "aquarium", "society", "Utopia", "xylem", "relationship", "prosperity", "amendment", "mammary gland", "Skeen's duct",
+"union", "tarmac", "silly putty", "basketball", "hockey stick", "puck", "goal", "look of disdain", "buckyball", "particle", "grid", "gristle", "sinus", "eardrum", "virginity", "pencil", "chart", "computer", "podiatrist", "soup", "leather jacket", "cheekbone", "gift", "pimple", "acne flareup",
+"blackhead", "philosopher", "salmon", "dragon", "brownie", "sphinx", "howler monkey", "supersoldier", "butter", "elf", "gnome", "porcupine", "aardvark", "anteater", "insect", "daddy long-legs", "antelope", "pawn", "King of the Visigoths", "Overlord of the West", "phalange",
+"bowels", "Keeper of the Flame of Astaroth", "Gatekeeper", "Ralzebub", "Lucifoo-foo", "royalty", "kangaroo", "pulp", "Ruler of the Dead", "planetary fragment", "succotash", "facial hair", "bushtit", "sarcophagus", "indention", "nuclear warhead",
+"presidential campaign", "presidential candidate", "wormfeast", "bottle of vodka", "legend", "myth", "ghost", "apparition", "banshee", "Valkyrie", "beeper", "multiplexer", "nipple", "soloist", "band", "peninsula", "house", "block of flats", "matchbox", "apartment complex",
+"optic nerve", "halibut", "dog license", "stegosaurus", "brontosaurus", "brachiosaurus", "triceratops", "pterodactyl", "element", "atom", "atomizer", "centrifuge", "jellybean", "emu", "imp", "pike", "shrimp", "scalawag", "carpetbagger", "meltdown", "Mongol", "Tar-tar",
+"barbarian", "packet of tartar sauce", "barnacle", "scimitar", "Viking", "constellation", "goblin", "ogre", "gremlin", "hippo", "giraffe", "knight", "motorcycle", "frisbee", "ringworm", "tapeworm", "growth of fungus", "petri disk", "sledgehammer", "anvil", "stirrup",
+"thong", "polo player", "bag of chips", "piano", "vibraphone", "megaphone", "shoe", "sock", "underwear drawer", "pile of junk", "pile of trash", "pile of compost", "hood ornament", "band of gypsies", "vagabond", "policeman", "psychiatrist",
+"cottage cheese-like discharge", "first book of an endless Time-Life series", "Time-Life operator", "wrestling match", "boxing match", "boxer", "pugilist", "surge of energy", "embassy", "embassador", "Rockette", "Chippendale dancer", "stripper",
+"golf ball cleaner", "washing machine", "chart", "handbasket", "work of smut", "mirror", "block of asphalt", "piata"
+);
+
+/* Verbs (Third person singular, present tense) */
+
+var words4 = new Array ("licks", "sucks", "defecates", "masturbated", "chewed", "swallows", "oscillated", "electrifies", "joins", "gilds", "fuses", "fornicates with", "jumps in", "plays with", "falls in", "hangs", "eats", "helps", "passes", "beats", "grows into", "snaps", "buries", "likes", "becomes", 
+"wanders into", "sharpens", "lathers", "forgets to explore", "has a speech about", "builds", "counts", "declares war on", "slaps", "does not inhale", "forgets to cover", "becomes volatile with the addition of", "devolves into", "burns", "paints", 
+"often fondles", "cremates", "is revolted by the sight of", "has a pet which has", "enjoys", "straps on", "practices with", "shines", "deviates from", "falls and worships", "throttles", "flogs", "grapples with", "knows lust of", "cradles", "spawns", 
+"herniates", "can not fully understand", "revolves around", "enslaves", "points in the direction of", "leaks when containing", "stretches the seams with", "fills another one with", "kills with", "picks at", "tugs at", "blows", "lacerates", 
+"operates on", "accosts", "runs away with", "does away with", "makes pulp of", "cleaves", "mashes", "washes", "checks", "is sick because of", "gives refuge to", "deposits", "plows over", "reincarnates", "never bends", "drops", "feels", "bakes", "extols coitus with", 
+"doesn't want to choreograph", "spelunks", "pops", "knights", "gyrates", "wipes off", "takes something away from", "has a nostril-full of", "takes Mother to", "stares out of", "keeps", "makes a mixture inclusive of", "takes care of", "ices", "shaves", 
+"brakes", "kisses", "thanks", "flies into", "locates", "opens a box chock full of", "has vomit containing", "prepares", "receives a canister filled with", "removes", "remains with", "shakes", "battles with", "comes into contact with", "exchanges blows with", 
+"eradicates", "pages through", "notifies", "authorizes", "becomes", "has a rout with", "argues over", "slices open", "scratches up", "gauzes", "staunches", "issues a warrant on", "thoroughly searches", "scrutinizes", "gazes at", "squints at", "summarizes", 
+"surrenders to", "carries", "has", "dubs over", "speeds past", "dismembers", "has an illicit liaison with", "has a rendezvous with", "despises", "offers", "staples Fred to", "does", "packs", "stuffs", "bleeds on", "puts cellophane on", "zips up", "puts holes in", 
+"warps", "disfigures", "flies by", "rains on", "throws dung at", "tapes up", "reimburses", "flatulates after eating", "removes hair from", "does not respond well to", "gets coated with a layer of", "makes a sublime reference to", 
+"gives a large sum of money to", "has sex with", "is killed by", "bruises", "detaches Larry from", "carries the popular vote with", "produces a vacuum on", "extends curtesies for", "flees upon the sight of", "flattens", "smokes", "inhales", 
+"injects", "absorbs", "mistakenly eats", "constructs a bonfire with", "hallucinates after consuming", "lights up", "gets caught with", "goes to jail due to possession of", "is tested for", "mixes up a batch of", "is stained with", "trips on", 
+"is stoned because of", "gets dizzy from", "is high due to", "has steep levels of", "sees pink elephants because of", "is above the legal limit for", "blacks out from", "halts upon sight of", "gasps at", "is executed by", 
+"justifies the actions of", "for a living instructs", "hazards a glimpse at", "gives injections to ease", "capitulates", "surrenders to", "is making love to", "drops a load on", "says 'hello' to", "does not bother with", "invents", 
+"realizes the importance of", "indiscriminately juggles", "sacrifices", "powers up on", "is dilating", "writes a program for", "is secretly watching", "is hiding in", "stalks", "sees George behind", "recommends", "co-pilots", "is wallowing in", 
+"falsely accuses", "sentences", "constructs an edifice made only of", "applies torque to", "becomes truculent upon sight of", "is a clone of", "has held a grudge against", "speaks endlessly about"
+);
+
+/* Infinitives */
+
+var words5 = new Array ("eat", "sleep with", "sleep on", "lick", "run towards", "pick up", "peel", "defecate on", "stand on top of", "drive", "wait for", "describe", "make fun of", "delegate", "puncture", "circumsize", "speak with", "vibrate", "moisten", "wet", "make love with", "point at",
+"grasp", "choke on", "choke", "throttle", "rearrange", "invade", "spoil", "aggravate", "rot", "decompose", "blister", "smoke", "gangliate", "coalesce", "feed", "ignore", "ask", "command", "force", "shred", "coerce", "persuade", "fuse", "mangle", "risk", "expel", "excommunicate", "pardon", "knight",
+"bake", "fry", "scrape", "scramble", "thicken", "coagulate", "insert", "leave out", "fax", "irritate", "call", "include", "burn", "heal", "strike", "forget", "remember", "dance", "thrash", "beleager", "wish for", "desire", "throw up", "mash", "enlarge", "light up", "lose", "let loose", "unleash", "flay", "attack",
+"rush", "strip", "inhale", "divide", "vaporize", "inform", "waste", "soil", "confuse", "wash", "bedazzle", "bewilder", "throw away", "define", "test", "rely on", "worry about", "screw up", "tease", "wipe", "smell", "taste", "feel", "make", "plaster", "grip", "grapple with", "eat", "pay attention to", "relocate",
+"repeat", "form", "shape", "tend to", "feed", "ooze", "bag", "box", "interrupt", "silence", "watch", "be inside", "give away", "dress", "tear", "slurp up", "gander at", "stroll past", "fire", "whip up", "kiss", "plaster", "ask", "pander to", "delegate", "metamorphosize", "wink at", "lounge around", "plunder",
+"pillage", "rape", "raid", "squander", "smuggle in", "drool on", "quiz", "regulate", "vomit on", "account for", "feast on", "rob", "belittle", "collect", "write about", "log the progress of", "cannonize", "verify", "verify the existence of", "double-check", "strain", "cook with", "sleep on", "lift",
+"locate", "punish", "clean up", "sub for", "paint", "translate", "translate for", "ponder", "represent", "make a fuss over", "freeze", "take note of", "sweep", "mop", "comfort", "confiscate", "become intimate with", "sing to", "irritate", "reinstate", "shake it at", "poke", "prod", "arouse",
+"flop out", "compliment", "pasteurize", "amuse", "entertain", "make faces at", "wiggle", "dress", "salute", "dance with", "burst through", "ionize", "grease down", "splatter bile on"
+);
+
+/* Adverbs */
+
+var words6 = new Array ("quickly", "quietly", "stupidly", "slovenly", "abstrusely", "religiously", "devoutly", "nasally", "redundantly", "accidentally", "secretively", "vibrantly", "arrogantly", "bombastically", "horrendously", "disgustingly", "shakenly", "divinely", "well", "purposefully", 
+"purposelessly", "smartly", "decrepitly", "wastefully", "musically", "happily", "savagely", "algebraically", "graphically", "humbly", "intravenously", "numerically", "intelligently", "convolutely", "visibly", "corrosively", "odoriferously", "notably", "condescendingly", 
+"destructively", "wonderfully", "visually", "graciously", "generously", "imperially", "wretchedly", "orally", "blindly", "deftly", "adeptly", "wrongly", "tiredly", "drunkenly", "soulfully", "wistfully", "patronizingly", "clandestinely", "rosily", "moronically", "morosely", 
+"actively", "gloriously", "amazingly", "surprisingly", "voraciously", "accusingly", "embarrassingly"
+);
+
+/* Interjections/Colloquialisms/Slang/Parenthetical Expressions */
+
+var words7 = new Array ("hey", "oh boy", "yes", "no", "oh my God", "hey Regis", "dammit", "gods and fishes", "holy cow", "ye gad", "egad", "Bohemia", "Aargh", "Humph", "hello", "ouch", "wait", "hurry", "stop", "look out", "hot damn", "good Lord", "aack", "Jesus", "ay carumba", "wah", "yeow", "pow", "zap", "zounds", "gak", 
+"whoa", "giddy-up", "gosh", "drat", "darn", "whew", "plbbbt", "thud", "zoop", "bong", "bang", "dang", "holy shit", "smack", "at last", "eureka", "dude", "boo hoo", "whee", "yee hah", "heh heh heh", "pssst", "eeek", "yikes", "whoopee", "whoop-de-doo", "wait", "by Jiminy", "by George", "by Jove", 
+"oh Henry", "whoopsies", "Odin's beard", "by Odin", "bowels of Loki", "call Geraldo", "oh", " please", "pleeeaase", "I beg you kind sir", "whoops", "hold up", "just a second", "wait just a smeg", "oh", " smeg", "huh?", "what?", "say what?", "I say", "how odd", "how strange", 
+"fascinating", "perplexing", "what a revolting concept", "eww", "yuck", "bleah", "blah blah", "urrp", "woe is me", "alas"
+);
+
+/* The core:  Sentence Structures.
+	  (xxxxxxxxx)  -  Text always printed
+	  A,J,N,V,F,D,I,S:  Word forms
+	  (Articles, adjectives, nouns, verbs, infinitives, adverbs,
+	  interjections, and superlatives, respectively.
+*/
+
+var sentences = new Array ("(Stolen: )AJN(.)","(Missing: )AJJJN(.)","(Together, we shall rule this)N(!)","JJN(!  I hate that)JN(,)D(!)","(Our main problem:  the damn)N(.)","(Now I get it!  The)JJN(, not the)JJN(!)",
+"(Don't ask why, just watch)AJN(.)","AJ(,)J(,)JN(?  No, I don't have one of those.)","(You didn't tell me that you had a)N(.)","I(, I say,)I(, this)N(is)S(my)N(.)",
+"(My)N(cannot be)SAN(...it's rather)J(to even mention that to my)N(.)","I(...)AJN(...it was)D(...and...)D(moving about...and it was)J(and)J(as it...stalked my)N(...)","I(!  Somehow)AJN(has gotten into my colon!)",
+"I(!  Somehow)AJN(has gotten into my)N(!)","('Give)AN(a chance, you people.  Some day, you shall see, it will become)SAN(.')","(I turned)AN(into)ANN(in order to accommodate my)N(.)","AN(is)J(, but)AN(is)J(.)",
+"(He stood there,)D(smiling at)AN(.)","(Praise the)N(!)","(Long live the)N(!)","(God save the)N(!)","(Some people like)AN(while other people like)AN(.)","N(,)N(,)N(, and)N(: )J(.)",
+"(You)JN(!  That's my)N(, tell)AN(to get his own)JN(!)",
+"(Yes, I read the manual, but)AJN(is)SAN(.)","(Pardon me,)JN(, but is that your)JN(or just)AJN(?)","(Brutus usurped his throne too)D(.)","(Come on!  I've seen your)N(and you've probably had it in your pants the whole time!)",
+"I(!  I forgot the)JN(that was in my)N(!)","(I enjoyed myself, although I really didn't understand why)AJNVAN(.)","(What a funny-looking)N(!)","ANN(!)","ANVAJN(?  Not after)AJNVAN(and)AJN(, it won't!)",
+"I(!  Not enough)N(if)ANVAN(!)","I(!)AJJN(is in)AN(!)","JNN(?  What the hell does that mean?)","(What the)N(is going on?)","(I asked)AN(to be)J(.)","(Do not take)AN(to class.)","I(!  The)N(has become)SAN(!)",
+"(Take this)N(and shove it!)","(To be or not to be, that is the)N(.)","(Listen to)AN(, stupid.)","(Stop that)N(!)","I(!  I said ')N(,' not ')N(.')","(You better take that damn)N(out of my)N(!)",
+"(I'm warning you!  If you keep touching me with that)JN(, something)J(might happen to your)N(!)","(I did not realize that)AN(could fit inside)AN(.)","(My mistake was in assuming that it was)AN(.)",
+"(But of course!  I always carry a spare)N(.)","(Don't mess with)AN(.)","N(force equals the mass of the)N(times the displacement of the)N(.)","(I have not shaved)AN(with)AN(.)","(The)N(joint is fastened to the)N(joint.)",
+"(It pays to be)J(.)","D(and)D(.  That's how)AN(gets through life.)","(Sally beat)AN(in a test of wits.)","(Larry turned out that way because when he was a baby, he was)SAN(.)","I(, I'm choking on my own)N(.)",
+"(Grandpa bought)AN(.)","(Look at that)J(bastard!)","AN(is a)J(twit!)","(Pack your bags with)AN(,)AN(,)AN(,)AN(, and, oh, don't forget)AN(.)","(They were happy in spite of that awful)N(.)",
+"(I purse my)N(at your)N(.)","(Ignorant wog motherboy)N(.)","(He told me about his)N(, shifting)D(in his)N(.)","(I said 'No, I do not and never shall have a)N(stuffed with a)N(.')","(Donde esta la)N(de Pepe?)",
+"(Take that)N(out of my)N(or I'll)D(force my)N(into your)N(!!)","JN(?  Well...piss on my)JN(!)","(How do you say ')AJ(,)J(,)JN(' in Esperanto?)","(Como se dice ')N(' en espanol?)",
+"(What did Regis mean when he said ')J(and)J(is my)NN('?)","(If you mix)AN(and)AJN(together, the mixture will turn)J(and mutate into)ANN(.)","(The Pope)D(grasped the man's)N(and placed it in the sacred)N(.)",
+"(After hours of medical study, the waggish student exclaimed ')I(!  His sexual organs look like)AN(!)","(I followed)AN(until I bumped into)ANN(.  At that time, I realized I was standing in a)N(puddle.)",
+"(Oh, yeah, you)JN(?  Suck my)N(!)","(Praise the Lord; I saw the)N(!)","(...but when he's around)AN(, he's as)J(as a)N(!)","N(:  noun; a)J(kind of)JN(.)","(They're)J(and they're)J(...The)N(Family.)",
+"D(, I learned my place in the)N(community.)","(Ingredients:  )N(,)N(,)N(for flavor and)N(as a preservative.)","(You slimy little)N(!  I've had enough of you and your)N(friends!  Take your)N(and get your)J(ass outta this)N(!)",
+"(That's what you get for having)AN(in your)N(in your)N(.)","(That's what you get for having)AN(in your)N(.)","I(!  I was sitting on)AN(!)","(Do not groom)AN(during class.)","(Now that's a poor IQ for a glass of)N(!)",
+"(Don't touch that)N(or you'll catch something.)","(A)N(is not a)N(or a)N(or a)N(.)","(Life is like a)N(,)D(wandering amidst the joy that is)AN(.)","I(!  I lost my)N(!)",
+"(Synonyms for)N(:  )N(,)N(,)N(,)N(,)N(,)N(,)NN(, and)NNNNN(.)","(I'll have yours, Darling.  I love it.  I'm having)N(,)N(,)N(,)N(,)N(and)N(!)","(I can't take these)N(Vikings always chanting ')NN(' over and over again!)",
+"(I'm a)N(, I'm OK...I sleep all night and I work all day.)","(I wish I'd been a)N(, just like my dear Papa.)","(This is an ex-)N(!)","(Eat)N(and die, you son of a)N(!)",
+"(May I take this opportunity to tell you that you are a)J(little smeg-head.)",
+"(Gourmet)N(!  Bon appetit!)","(Does ')N(' really mean ')J('?)","(If you look carefully, you may see the wild)N(thrusher has eaten the)N(, but now it is being stalked)D(by a hungry red-breasted)N(.)",
+"(The)N(concert began an hour ago.)","(No, you cannot wear)AN(.)","(It's your turn to give)AN(a bath.)","(Feed that)N(!)",
+"(A good leader would be)J(,)J(,)J(,)J(,)J(,)J(, and)J(, and he or she would have an undying)N(for America.)",
+"(My)N(does not smell right, and my)N(has the texture of a)N(.)","(You smell like a)JN(.)","(I am not fond of my)N(-in-law.)","(Oh!  YOURS is)J(!  I thought you meant MY)N(!)","(All I wanna do is use my)NNN(and-a)NN(!)",
+"(Check, baby!  Check, baby:  )NN(!)","(Baby got)N(!)","(I'm so)J(!  I'm, I'm so)J(!)","(Happy)NN(day!)","(I'm so)J(I could cry!)","(What a dreary-looking)N(!  I would never buy one for my)N(!)",
+"(The dignity of)AN(cannot exceed the)N(threshold.)","(Check, baby!  Check, baby:  )NNNN(; Check, baby!  Check, baby: )NNN(; Check, baby!  Check, baby:  )NN(; Check, baby!  Check, baby:)NN(;  Shake that)N(!)",
+"(A)N(a day keeps the)N(away.)","(A fool and his)N(are soon parted.)","(Once upon a time, there was a great)N(who lived in a large)N(in the clouds.)",
+"(Inventory: )N(,)N(,)N(,)N(,)N(,)N(,)N(, and)N(.  Ok, we're missing: )N(,)N(,)N(,)N(, and)N(, but we still have)AN(on special order.)","(Why can't I have a)N(?)","(You deserve that)N(more than anyone.)",
+"(A horse is a)N(, of course, of course...)","(Give me my)NN(, please!)","(Give my drink a twist of)N(, would you?  And go easy on the)N(.)","(One for the)N(, two for the)N(, three to get ready, and)NN(!)",
+"(Hey, Spike!  You're scaring my)N(!)","(Don't you step on my)JN(shoes!)","(The)N(factor has diminished in oh, so many ways!)","(Angel of)N(!)",
+"(Oh, Lord, savior of)AN(, messenger of)AN(, keeper of the holy)N(, I call unto thee.)","(Fifth floor: )N(,)NN(,)N(,)N(,)NNN(, and)JN(.)","(Ashes to ashes, dust to)N(...)","(Bow to the)N(of the Kingdom of)AN(!)",
+"(What's it like being)AN(?)","(...in)N(and in)N(, until)N(do you part?)","(Do you take this)N(to be your lawfully wedded)N(?)","(I now pronounce you)N(and)N(.)","(You may kiss the)N(.)",
+"(...and they lived)D(ever after.)","AN(must live!)","(The ink is)J(.  The page is)J(.)","(Do you agree to tell the)N(, the whole)N(, and nothing but the)N(?)","(Just like Muhammad Ali, they called him ')N(!')",
+"(Get from in front-a me, the)N(runs to me, my DJ's)J(, he's X, I call him ')N(,' ya know, he could cut a)N(from side to side...)","(I pledge allegiance to the)N(of the)JN(of America.)",
+"(...o'er the land of the)N(, and the home of the)N(!)","I(!  We're under attack!  Every)N(to his post!)","IIIII(!  Did you see THAT??!?)","D(, I dub thee 'Sir)N('!)","(Thou hast an odd)N(betwixt thy)N(and thy)N(!)",
+"(We are the knights who say: ')NNN('!)","(And we are the knights who say ')III('!)","(Goodness gracious,)J(balls of)NN(!)","(That's one melodramatic)N(!)","(Isn't that)N(romantic?)","(That's one)JN(!)",
+"I(!  I beat you by a)N(and half of a)NN(!)","(Boris Becker's got a great big)N(in his nose, ha! Ha! Ha!)","AJN(...there's something)D(evil about it...)","(It won't work without)AN(.)",
+"(Sooner or later we're gonna pay for)AN(!)","N(is to)N(as)N(is to)N(.)","(What's the matter with)AN(?  It's awful)J(lately.)","(He has the posture of)AN(.)","I(!  I thought I was rid of)AJN(!)",
+"(It's my turn to lick)AN(.)","(Fun:  high voltage and my)N(.)","(Shut the)N(up!)","(Abso-)N(-in'-lutley!)","(Yes, Emperor)N(, I am painfully aware of your)NN(.)","(...and a)N(in a)N(tree.)",
+"III(!  I've got more)NN(in my)N(than anybody!)","(Hey,)N(boy!  Meet)N(boy!)","(Critical mass will be achieved when)AN(inserts)AN(into itself.)","(I see no danger in allowing him to keep the stray)N(.)",
+"(What'dya say 'bout)AN(?)","(All I said was ')JNN(' and)AN(got all)J(.)","(I swear it on my father's)N(.)","(Do not hold me accountable for the)N(incident.)",
+"(I knew ')N(,' but I had to look up: )N(,)N(,)N(,)N(,)N(, and)NN(.)","(It is a classic tale of)N(,)N(, and)N(.)",
+"(The main character emphasizes)AN(by using)AN(,)AN(,)AN(, and)AN(, but not as much as the other)N(evident in the sub-plot.)",
+"(The director of)J(relations met with the)N(administrator and discussed the future of)AN(with the chairman of the)N(.)","(I want to be a)N(counselor when I grow up.)","(They call me ')N(.'  What a stupid nickname!)",
+"(Make room in your heart for)AN(.)","(Make room for)AN(.)","(Find me a)N(real quick and give it to)AN(.)","(What a)JN(!)","(Would you like paper or)J(bags for your groceries?)","I(!  Hey...)I(!  Get the mop!  Get the...)I(!)",
+"(You have the charm, wit, and intelligence of)AN(.)","(I'v seen a better)N(on my)JN(!)","(The nonorable knight was overcome by)AN(,)AN(, and)AN(, who all banded to vanquish to brave warrior.)",
+"(What does)AN(have to do with)AN(?)","(What does)AN(have to do with it?)","(How do you make)ANN(?)","(How do you make a)N(?)","(How do you make a)NN(?)","I(!  That)N(needs a haircut!)",
+"AN(oozed ever so)D(into)AN(.)","AN(does not match)AN(, but)AN(would complete my)N(outfit.)","(Supreme divine authority comes from a mandate from the masses, not because some watery)N(threw a)N(at you.)",
+"(We will never complete the quest for the Holy)N(.)","(Holy)N(!  Oh my)N(!  I've been bitten by)AN(!)","(You)J(pile of)N(droppings!  I've had enough of you, you)J(,)J(,)JN(!)","(Shut your)J(gob, you)N(!)",
+"(Oh, yeah, it's not difficult to grow weary of)AN(.)","(What a lousy)N(!)","(You remind me of)AN(.)",
+ "(You can't say ')N(' on the radio.  Or ')N(,' or ')N(,' or ')NN(.')","(Eventually I'm gonna get damn sick of that)N(.)",
+ "(No, I won't let you)FAN(.)","(I like to)FAN(.)","F(that)N(, right now!)","(If you don't)F(my)N(as soon as possible, you will suffer the consequences.)","(Do you like to)F(that)N(often?)","(To)F(or not to)F(, that is the question.)",
+ "(The rules are:  A> Always)F(your)N(;  B>  Never)F(your)N(.)",
+ "(Sure, I always)F(my)N(.)","(What?!  You never)F(your)N(?)","(I find it difficult to)FAN(.)","(Is it possible to)FAN(?)","(If you won't)F(the)N(, I'll do it myself!)","(Yes, dear, you may)FAN(.)",
+ "(You see, I...oh, God...I used to...to...uh...)F(the, um...well, the neighborhood)N(...)",
+ "(I never)F(my)N(, and neither does that)N(.)","FN(and die!)","(Don't forget to)FAN(if)AN(is)J(.)","(Don't)F(that)N(or you'll catch something.)",
+ "(Fred complained about the)N(he just bought.)","(Its)J(!  Its)J(!  Its)J(and)J(!  What a)N(!  And its mine!)","(Do you have any)N(poison?)","I(!  The)J(order of the)N(has sent my acceptance letter!)",
+ "(Don't stand like that!  You look like a)N(!)","I(!  Don't overreact...its just a)N(...albeit a)J(,)J(,)J(one...)","(But)AN(is not meant to)FAN(so it shall all come to naught!)",
+ "(I don't care how many times you)F(the)N(...it just won't work!)","(Okay, one more time.  Don't)FAN(, don't)FAN(and whatever you do, don't ever)FANN(.)","(If you're going to)F(the)N(then do it right.)",
+ "(I don't want to)F(.)","(So who's gonna)FAN(?)","(I need a favor--can you)F(my)N(for me?)","(Okay, okay, I'll)F(my)N(tomorrow.)",
+ "I(!  I'll wipe it on my)N(!)","(It was about this long and it was attached to Dave's)N(...)","(Well, 'FBI' can't stand for Federal Bureau of)NNN(, can it?)","(I'll)F(HIS)N(as soon as I get the chance to)F(my OWN)N(.)",
+ "(A)NN(a day...well, it won't keep)AN(away will it?)","(I can't)FAN(because it's only legal in two states.)","F(this and)F( that!  This job is Hell on me and the)N(.)","(I really wish you'd)F(yourself!)",
+ "(Close your eyes and)F(that)N(for all it's worth!)","(He said he'd)F(me if I didn't)FAN(!)","(Don't try to)F(me!  I know the value of a)N(!)","I(!  Where's that)N(guy?)","(I'll go wherever I can)F(my)N(in peace.)",
+ "I(!  Yes!  I can)FAN(!  And you can't!)","(I did not realize my)N(was that dangerous.)","(Don't)FAN(!  Oh,)I(!  What a complete)N(!)","(Well)FAN(!  You were right about that)N(.)","(I'm so)J(I could)FAN(.)",
+ "(And I wonder, wonder who, buh doo-doo-doo...Who wrote the)N(of)N(?)","(Senor le gusta el)N(, y habla mucho con la)N(.)",
+ "(Remind me to take my)N(home.  And don't leave my)N(in your car.)","(We're gonna have one helluva)N(tonight!)","(Let's get ready to)F(!!!)","(Pump up the)N(, pump it up, 'til yo')N(is movin'.)",
+ "I(!  The)N(colony is never on any of these maps.)","(So, whaddya say, baby?  Your)N(, or mine?)","(On my paper, the word ')N(' looked like the word ')N('.)",
+ "(Under the)N(downtown, is where I drew some)N(.)","(Leave that damn)N(at home.  If you bring it to the wedding, I will)F(you.)",
+ "(Your)NN(is embarrassing me again.)","(I see that the)N(and the)N(get along quite well.)","(Stop!  Collaborate and)F(!  Ice is back with a brand new)N(!)","(So let's go at it,)N(, 'cuz I'm gonna)F(you up.)",
+ "(I hate)N(-huggers.)","(Every)N(is sacred.)","(Isn't it fun to charter a)N(, on the wide open)N(sea.)","(Sit on my)N(, and tell me that you love me.  I'll sit on your)N(and tell you I love you, too.)"
+);
+
+
+/* Superlatives */
+
+var words8 = new Array ("as large as", "as big as", "not as small as", "bigger than", "as smelly as", "as sexy as", "as radioactive as", "smaller than", "slower than", "faster than", "as fast as"
+);
+
+function goose() {
+	var s = sentences[Math.round(Math.random()*sentences.length)];
+	var result = "";
+	var literal = false;
+	var letter = "";
+	for (var i=0; i<s.length; i++) {
+		letter = s.substring(i,i+1);
+		if (letter == "(") { literal = true; letter = ""; }
+		if (letter == ")") { literal = false; letter = " "; }
+
+		if (literal) result += letter;
+		else		
+			switch (letter) {
+				case "A": result += words1[Math.round(Math.random()*words1.length)] + " "; break;
+				case "J": result += words2[Math.round(Math.random()*words2.length)] + " "; break;
+				case "N": result += words3[Math.round(Math.random()*words3.length)] + " "; break;
+				case "V": result += words4[Math.round(Math.random()*words4.length)] + " "; break;
+				case "F": result += words5[Math.round(Math.random()*words5.length)] + " "; break;
+				case "D": result += words6[Math.round(Math.random()*words6.length)] + " "; break;
+				case "I": result += words7[Math.round(Math.random()*words7.length)] + " "; break;
+				case "S": result += words8[Math.round(Math.random()*words8.length)] + " "; break;
+				default: result += letter;
+			}
+//document.write(i+","+letter+","+result+"," + literal+"<br>");
+   }
+	var newresult = result.replace(/ +\!/g,"!").replace(/ +,/g,",").replace(/ +\./g,".").replace(/ +\?/g,"?").replace(/ +\:/g,":");
+	return "" + newresult.substring(0,1).toUpperCase() + newresult.substring(1);
+}
+
+function geese() {
+	var g = "";
+	var total = document.forms[0].elements["sentences"].value;
+	for (var j=0; j<total; j++) {
+		g += "<p>" + goose() + "</p>";
+	}
+	document.getElementById("goose").innerHTML = g;
+}
+
+</script>
+
+</head>
+
+<body onload="geese()">
+<div class="top">
+<hr>
+   <div class="button"><a href="javascript:geese()"></a></div>
+	<p>
+   <b>Welcome to GOOSE, the Grand Oligarchy Of Synthetic English.</b><br>
+	Some time in 1992, I wrote this program with <a href="http://www.unc.edu/~jmspille/blog.shtml">Jerry</a> and Keeley in spastic adolescent fits of nerdy boredom.  It's basically a glorified mad-lib generator, with sentence structures and word substitutions designed specifically to amuse us teenage boys.  We used the old IBM PC in Sr. Marroquin's Spanish class.  Why he let us get away with such nerdy behavior, I'll never know.  But GOOSE now lives on thanks to the magic of translating the <a href="GOOSE.BAS">old BASIC code</a> to JavaScript.
+   </p>
+	<b><i>Click the Goose Button for more!</i></b>
+   <form onsubmit="geese()" action="javascript:return false;">Number of sentences: <input id="s" type="text" name="sentences" width="3" size="4" maxlength="3" value="10" />
+</div>
+<hr>
+<div id="goose" class="content"></div>
+</body>
+</html>
+
