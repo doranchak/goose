@@ -4,9 +4,8 @@ Way back in 1992, I wrote this program in BASIC with <a href="https://web.archiv
 
 Live demo: 
 
-    https://doranchak.github.io/goose/
-    
-    http://www.oranchak.com/goose/
+* https://doranchak.github.io/goose/
+* http://www.oranchak.com/goose/
 
 It's the great-great-grandfather of ChatGPT.
 
