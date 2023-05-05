@@ -8,5 +8,5 @@ Live demo:
     
     http://www.oranchak.com/goose/
 
-
+It's the great-great-grandfather of ChatGPT.
 
